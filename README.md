@@ -9,4 +9,4 @@ A beautiful card component with animated gradient border effect.
 - Clean and modern UI
 
 ## Live Demo
-You can view the live demo at: https://[your-github-username].github.io/gradient-border-card/ 
+You can view the live demo at: https://hanbyeol-shin.github.io/my/ 
