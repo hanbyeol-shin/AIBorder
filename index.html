@@ -32,7 +32,7 @@
             position: relative;
             display: inline-flex;
             height: 26.75rem;
-            padding: var(--space-g32, 21.25rem) var(--space-g24, 4.0625rem) var(--space-g32, 2rem) var(--space-g24, 1.5rem);
+            width: 20rem;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
@@ -84,46 +84,9 @@
                 --rotate: 360deg;
             }
         }
-
-        .card-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-title {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .card-text {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-button {
-            background-color: #B487FD;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-
-        .card-button:hover {
-            background-color: #9B6FE0;
-        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-content">
-            <h2 class="card-title">카드 컴포넌트</h2>
-            <p class="card-text">요청하신 스타일이 적용된 카드 컴포넌트입니다.<br>실제로 구현된 모습을 확인해보세요.</p>
-            <button class="card-button">자세히 보기</button>
-        </div>
-    </div>
+    <div class="card"></div>
 </body>
 </html> 
