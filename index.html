@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Component Demo</title>
+    <style>
+        :root {
+            --space-g32: 2rem;
+            --space-g24: 1.5rem;
+            --color-w100-op70: rgba(255, 255, 255, 0.70);
+        }
+        
+        body {
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        @property --rotate {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .card {
+            position: relative;
+            display: inline-flex;
+            height: 26.75rem;
+            padding: var(--space-g32, 21.25rem) var(--space-g24, 4.0625rem) var(--space-g32, 2rem) var(--space-g24, 1.5rem);
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 1.5rem;
+            background: var(--color-w100-op70, rgba(255, 255, 255, 0.70));
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: conic-gradient(
+                from var(--rotate),
+                hsla(263, 97%, 76%, 1) 0%,
+                hsla(263, 97%, 76%, 1) 15%,
+                hsla(240, 97%, 71%, 1) 20%,
+                hsla(229, 97%, 66%, 1) 25%,
+                hsla(220, 93%, 79%, 1) 30%,
+                hsla(215, 91%, 85%, 1) 33%,
+                hsla(210, 90%, 96%, 1) 37%,
+                hsla(210, 90%, 96%, 1) 43%,
+                hsla(215, 91%, 85%, 1) 47%,
+                hsla(220, 93%, 79%, 1) 50%,
+                hsla(229, 97%, 66%, 1) 55%,
+                hsla(240, 97%, 71%, 1) 60%,
+                hsla(263, 97%, 76%, 1) 65%,
+                hsla(263, 97%, 76%, 1) 100%
+            );
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            --rotate: 0deg;
+            animation: rotation 5000ms linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                --rotate: 0deg;
+            }
+            100% {
+                --rotate: 360deg;
+            }
+        }
+
+        .card-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-button {
+            background-color: #B487FD;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .card-button:hover {
+            background-color: #9B6FE0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-content">
+            <h2 class="card-title">카드 컴포넌트</h2>
+            <p class="card-text">요청하신 스타일이 적용된 카드 컴포넌트입니다.<br>실제로 구현된 모습을 확인해보세요.</p>
+            <button class="card-button">자세히 보기</button>
+        </div>
+    </div>
+</body>
+</html> 
