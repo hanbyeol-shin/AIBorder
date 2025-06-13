@@ -3,90 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Component Demo</title>
+    <title>Gradient Border</title>
     <style>
-        :root {
-            --space-g32: 2rem;
-            --space-g24: 1.5rem;
-            --color-w100-op70: rgba(255, 255, 255, 0.70);
-        }
-        
+        @import url("https://fonts.googleapis.com/css?family=Lato:300");
+
         body {
-            margin: 0;
-            padding: 2rem;
-            background-color: #f0f0f0;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            height: 100vh;
+            background: #ffffff;
         }
 
-        @property --rotate {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-        }
-
-        .card {
+        .gradient-border {
+            --border-width: 2px;
             position: relative;
-            display: inline-flex;
-            height: 26.75rem;
-            width: 20rem;
-            flex-direction: column;
-            justify-content: flex-end;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            border-radius: 1.5rem;
-            background: var(--color-w100-op70, rgba(255, 255, 255, 0.70));
-            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+            width: 300px;
+            height: 200px;
+            font-family: Lato, sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: white;
+            background: #ffffff;
+            border-radius: 10px;
         }
 
-        .card::before {
-            content: "";
+        .gradient-border::after {
             position: absolute;
-            inset: -2px;
-            border-radius: 1.5rem;
-            padding: 2px;
-            background: conic-gradient(
-                from var(--rotate),
-                hsla(263, 97%, 76%, 1) 0%,
-                hsla(263, 97%, 76%, 1) 15%,
-                hsla(240, 97%, 71%, 1) 20%,
-                hsla(229, 97%, 66%, 1) 25%,
-                hsla(220, 93%, 79%, 1) 30%,
-                hsla(215, 91%, 85%, 1) 33%,
-                hsla(210, 90%, 96%, 1) 37%,
-                hsla(210, 90%, 96%, 1) 43%,
-                hsla(215, 91%, 85%, 1) 47%,
-                hsla(220, 93%, 79%, 1) 50%,
-                hsla(229, 97%, 66%, 1) 55%,
-                hsla(240, 97%, 71%, 1) 60%,
-                hsla(263, 97%, 76%, 1) 65%,
-                hsla(263, 97%, 76%, 1) 100%
+            content: "";
+            top: calc(-1 * var(--border-width));
+            left: calc(-1 * var(--border-width));
+            z-index: -1;
+            width: calc(100% + var(--border-width) * 2);
+            height: calc(100% + var(--border-width) * 2);
+            background: linear-gradient(
+                60deg,
+                hsla(263, 94%, 80%, 1),
+                hsla(263, 94%, 80%, 1),
+                hsla(229, 99%, 71%, 1),
+                hsla(205, 100%, 91%, 1),
+                hsla(229, 99%, 71%, 1),
+                hsla(263, 94%, 80%, 1),
+                hsla(263, 94%, 80%, 1),
+                hsla(263, 94%, 80%, 1)
             );
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            --rotate: 0deg;
-            animation: rotation 5000ms linear infinite;
+            background-size: 300% 300%;
+            background-position: 0 50%;
+            border-radius: 10px;
+            animation: moveGradient 4s alternate infinite;
         }
 
-        @keyframes rotation {
-            0% {
-                --rotate: 0deg;
-            }
-            100% {
-                --rotate: 360deg;
+        @keyframes moveGradient {
+            50% {
+                background-position: 100% 50%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="card"></div>
+    <div class="gradient-border"></div>
 </body>
 </html> 

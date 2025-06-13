@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #222;
+  overflow: hidden;
+}
+
+.gradientBorder {
+  --border-width: 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  font-family: Lato, sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: white;
+  background: rgba(34, 34, 34, 0.9);
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.gradientBorder::before,
+.gradientBorder::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--border-width) * 4);
+  z-index: -1;
+  background: linear-gradient(
+    35deg,
+    hsla(263, 97%, 76%, 1) 0%,
+    hsla(229, 97%, 66%, 1) 50%,
+    hsla(210, 90%, 96%, 1) 100%
+  );
+  background-size: 200% 200%;
+  border-radius: 40px;
+  animation: morphBackground 8s ease-in-out infinite alternate;
+  filter: blur(15px);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.gradientBorder::after {
+  filter: blur(30px);
+  animation: morphBackground 8s ease-in-out infinite alternate-reverse;
+  opacity: 0.4;
+}
+
+@keyframes morphBackground {
+  0% {
+    border-radius: 40px;
+    transform: rotate(0deg) scale(0.8) translateX(10%) translateY(5%);
+    background-position: 0% 0%;
+  }
+  25% {
+    border-radius: 60px 30px 50px 40px;
+    transform: rotate(2deg) scale(1.2) translateX(-5%) translateY(10%);
+  }
+  50% {
+    border-radius: 30px 60px 40px 50px;
+    transform: rotate(-2deg) scale(0.8) translateX(15%) translateY(-5%);
+    background-position: 100% 100%;
+  }
+  75% {
+    border-radius: 50px 40px 30px 60px;
+    transform: rotate(2deg) scale(1.2) translateX(-10%) translateY(-10%);
+  }
+  100% {
+    border-radius: 40px;
+    transform: rotate(0deg) scale(0.8) translateX(10%) translateY(5%);
+    background-position: 0% 0%;
+  }
+} 
