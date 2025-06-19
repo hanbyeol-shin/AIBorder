@@ -13,6 +13,8 @@
             align-items: center;
             height: 100vh;
             background: #ffffff;
+            margin: 0;
+            padding: 0;
         }
 
         .gradient-border {
@@ -21,14 +23,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 300px;
-            height: 200px;
+            width: 335px;
+            height: 268px;
             font-family: Lato, sans-serif;
             font-size: 2.5rem;
             text-transform: uppercase;
             color: white;
             background: #ffffff;
-            border-radius: 12px;
+            border-radius: 16px;
         }
 
         .gradient-border::after {
@@ -39,33 +41,63 @@
             z-index: -1;
             width: calc(100% + var(--border-width) * 2);
             height: calc(100% + var(--border-width) * 2);
-            background: linear-gradient(
-                60deg,
-                hsla(263, 94%, 80%, 1) 0%,
-                hsla(263, 94%, 80%, 1) 10%,
-                hsla(229, 99%, 71%, 1) 20%,
-                hsla(205, 100%, 85%, 1) 30%,
-                hsla(229, 99%, 71%, 1) 40%,
-                hsla(263, 94%, 80%, 1) 50%,
-                hsla(263, 94%, 80%, 1) 60%,
-                hsla(229, 99%, 71%, 1) 70%,
-                hsla(205, 100%, 85%, 1) 80%,
-                hsla(229, 99%, 71%, 1) 90%,
-                hsla(263, 94%, 80%, 1) 100%
-            );
-            background-size: 500% 500%;
-            background-position: 0 50%;
-            border-radius: 22px;
-            animation: moveGradient 10s ease-in-out alternate infinite;
-            animation-delay: 2s;
+            background: 
+                radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
+            background-size: 200% 200%;
+            background-position: 0 0;
+            border-radius: 17.5px;
+            animation: moveMeshGradient 8s ease infinite;
         }
 
-        @keyframes moveGradient {
+        @keyframes moveMeshGradient {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
+            }
+            25% {
+                background-position: 100% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
+            }
+            50% {
+                background-position: 100% 100%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 98%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 101%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 98%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
+            }
+            75% {
+                background-position: 0% 100%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
             }
             100% {
-                background-position: 100% 50%;
+                background-position: 0% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
             }
         }
     </style>
