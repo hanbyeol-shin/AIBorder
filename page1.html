@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Offset - Page 1</title>
+    <style>
+        :root {
+            --size-700: 3.5rem;
+            --spacing-200: 1rem;
+            --spacing-75: 0.375rem;
+            --radius-150: 0.75rem;
+            --background-active-primary: #0114A7;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            min-height: 300vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-button {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            transform: none;
+            display: flex;
+            height: var(--size-700, 3.5rem);
+            padding: 0 var(--spacing-200, 1rem);
+            margin: 0 var(--spacing-200, 1rem);
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-75, 0.375rem);
+            flex: 1 0 0;
+            border-radius: var(--radius-150, 0.75rem);
+            background: var(--background-active-primary, #0114A7);
+            color: white;
+            border: none;
+            font-size: 16px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            z-index: 10;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .scroll-button.hidden {
+            transform: translateY(200%);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="section">
+            <h1>Scroll Offset - Page 1</h1>
+            <p>첫 번째 페이지입니다. 스크롤을 내려서 버튼의 동작을 확인해보세요.</p>
+        </div>
+        <div class="section">
+            <h2>Section 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="section">
+            <h2>Section 2</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="section">
+            <h2>Section 3</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        <div class="section">
+            <h2>Section 4</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <a href="page2.html" class="scroll-button">다음 페이지로</a>
+
+    <script>
+        let lastScrollTop = 0;
+        const button = document.querySelector('.scroll-button');
+        const MIN_SCROLL = window.innerHeight * 1.5; // 150vh
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 150vh 이상 스크롤된 상태에서만 동작
+            if (scrollTop > MIN_SCROLL) {
+                if (scrollTop < lastScrollTop) {
+                    // 위로 스크롤
+                    button.classList.remove('hidden');
+                } else {
+                    // 아래로 스크롤
+                    button.classList.add('hidden');
+                }
+            } else {
+                button.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html> 

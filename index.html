@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Border</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lato:300");
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gradient-border {
+            --border-width: 2px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 335px;
+            height: 268px;
+            font-family: Lato, sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: white;
+            background: #ffffff;
+            border-radius: 16px;
+        }
+
+        .gradient-border::after {
+            position: absolute;
+            content: "";
+            top: calc(-1 * var(--border-width));
+            left: calc(-1 * var(--border-width));
+            z-index: -1;
+            width: calc(100% + var(--border-width) * 2);
+            height: calc(100% + var(--border-width) * 2);
+            background: 
+                radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
+            background-size: 200% 200%;
+            background-position: 0 0;
+            border-radius: 17.5px;
+            animation: moveMeshGradient 8s ease infinite;
+        }
+
+        @keyframes moveMeshGradient {
+            0% {
+                background-position: 0% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
+            }
+            25% {
+                background-position: 100% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
+            }
+            50% {
+                background-position: 100% 100%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 98%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 101%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 98%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
+            }
+            75% {
+                background-position: 0% 100%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 102%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 96%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 101%, 71%, 1) 0%, transparent 50%);
+            }
+            100% {
+                background-position: 0% 0%;
+                background-image: 
+                    radial-gradient(circle at 0% 0%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, hsla(229, 99%, 71%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, hsla(205, 100%, 85%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, hsla(263, 94%, 80%, 1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, hsla(229, 99%, 71%, 1) 0%, transparent 50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-border"></div>
+</body>
+</html> 
